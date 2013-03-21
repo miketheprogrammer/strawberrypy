@@ -296,7 +296,7 @@ UNDERSTANDING start.py
 ``
 
 
-DIGGIN DEEPER
+- DIGGIN DEEPER
 -------------
 - Understanding how migrations work.
 
