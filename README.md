@@ -209,19 +209,19 @@ class UserController(BaseController):
 Creating a new Application
 --------------------------
  
-'''PERL
+```BASH
 mkdir appname
 cd appname
 touch controllers.py
 touch documents.py
 touch start.py
-'''
+```
 
 CREATING start.py
 -----------------
 Assumes you have controllers and documents
 
-'''PYTHON
+```PYTHON
 import strawberry
 import controllers
 import documents
@@ -236,7 +236,7 @@ strawberry.core.server.register_model(documents.LikesDocument)
 strawberry.core.server.register_model(documents.RealUserDocument)
 
 strawberry.core.server.server(host='0.0.0.0', port=80).start()
-'''
+```
 
 UNDERSTANDING start.py
 ----------------------
