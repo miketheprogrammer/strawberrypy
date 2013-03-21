@@ -318,3 +318,24 @@ if len(diff) == 0 and len(diff2) == 0:
 	return True
 <<End Code Segment>>
 ```
+
+- We get two sets, which allow mathematical operations on them.
+  Get the diffs, and compare.
+  If either diff is != 0 in length we have an incomaptibility issue.
+
+OTHERWISE WE:
+
+```PYTHON
+if revision is not None:
+	version = int(revision['_version']) + 1
+else:
+	version = 0
+print 'Current Version: %s ' % str(version)
+_revision = RevisionHistoryDocument()
+_revision._version = version
+_revision._collection = instance.collection_name
+_revision._schema = instance.schema.get_comparable()
+
+_revision.save()
+print 'New Revision for: %s \n\n' % str(instance.__class__)
+```
