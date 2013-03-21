@@ -308,7 +308,7 @@ with the schema stored in the revisions collection.
 
 The Following code is how its done. It's simple but efficient
 ```PYTHON
-<<Code Segment>>
+<<Start Code Segment>>
 set_a = set(revision['_schema'].items())
 set_b = set(instance.schema.get_comparable().items())
 diff =  set_a - set_b
@@ -316,4 +316,5 @@ diff2 = set_b - set_a
 if len(diff) == 0 and len(diff2) == 0:
 	print 'Found Revision: %s \n\n' % str(revision['_id'])
 	return True
+<<End Code Segment>>
 ```
