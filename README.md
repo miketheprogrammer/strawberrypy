@@ -85,6 +85,9 @@ What if we want to find all items that the user has liked
 	The Response ()
 	------------
 	```PYTHON
+QUERY :{"username": "user0", "is_liked": 1, "_revision_id": "514b33f286a955572d88c4d7"}
+Params :{"username": "user0", "is_liked": 1, "_revision_id": "514b33f286a955572d88c4d7"}
+ PATH :"/likes/username/user0/is_liked/1"
 	[
 		{
 			"username": "user0", 
