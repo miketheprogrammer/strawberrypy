@@ -1,7 +1,7 @@
 Strawberry Py
 ---------------
 
-Strawberry Py is a lightweight REST Full API Server. It is fast, efficient, and simple. Thats all.
+Strawberry Py is a lightweight RESTFull (No Auth Yet) API Server. It is fast, efficient, and simple. Thats all.
 
 This version of Strawberry Py also includes my MongoDB Relational Mapper and schema versioner called Mongitude
 
