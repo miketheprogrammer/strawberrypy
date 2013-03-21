@@ -296,9 +296,10 @@ UNDERSTANDING start.py
 ``
 
 
-- DIGGIN DEEPER
+DIGGIN DEEPER
 -------------
-- Understanding how migrations work.
+	- Understanding how migrations work.
+	------------------------------------
 
 Firstly, all documents that want to be revisioned must inherit from
 RevisionedDocument. This creates a field called _revision_id
