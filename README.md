@@ -11,6 +11,8 @@ Installing
 ----------
 - MUST HAVE MONGO DB INSTALLED
 - clone the repo
+- `git clone git@github.com:miketheprogrammer/strawberrypy.git`
+	- `cd strawberrypy`
 - run `sudo python setup.py install`
 	- This will install dependencies [CherryPy, PyMongo]
 
