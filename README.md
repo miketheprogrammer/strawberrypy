@@ -67,7 +67,7 @@ What if we want to find all items that the user has liked
 	[{"username": "user0", "item": "item0", "is_liked": 1, "_id": "5100489386a95530739473bd", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item4", "is_liked": 1, "_id": "5100489386a95530739473c1", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item6", "is_liked": 1, "_id": "5100489386a95530739473c3", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item7", "is_liked": 1, "_id": "5100489386a95530739473c4", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item8", "is_liked": 1, "_id": "5100489386a95530739473c5", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item9", "is_liked": 1, "_id": "5100489386a95530739473c6", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item11", "is_liked": 1, "_id": "5100489386a95530739473c8", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item15", "is_liked": 1, "_id": "5100489386a95530739473cc", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item17", "is_liked": 1, "_id": "5100489386a95530739473ce", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item18", "is_liked": 1, "_id": "5100489386a95530739473cf", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item19", "is_liked": 1, "_id": "5100489386a95530739473d0", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item20", "is_liked": 1, "_id": "5100489386a95530739473d1", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item24", "is_liked": 1, "_id": "5100489386a95530739473d5", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item26", "is_liked": 1, "_id": "5100489386a95530739473d7", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item27", "is_liked": 1, "_id": "5100489386a95530739473d8", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item32", "is_liked": 1, "_id": "5100489386a95530739473dd", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item37", "is_liked": 1, "_id": "5100489386a95530739473e2", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item40", "is_liked": 1, "_id": "5100489386a95530739473e5", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item42", "is_liked": 1, "_id": "5100489386a95530739473e7", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item43", "is_liked": 1, "_id": "5100489386a95530739473e8", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item46", "is_liked": 1, "_id": "5100489386a95530739473eb", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item48", "is_liked": 1, "_id": "5100489386a95530739473ed", "_revision_id": "5100489086a955305e447048"}]
 	```
 
-Creating a new Model or known in Stawberry as a Document.
+Creating a new Model or known in Strawberry as a Document.
 ---------------------------------------------------------
 
 - Necessary Imports
@@ -114,4 +114,46 @@ including relational structure
 
 	- super...blah...collection_name='users'
 		- Says to use db.users as the collection. i.e. `main.users`
+
+
+
+Example of Multiple indexes
+---------------------------
+'''PYTHON
+class LikesDocument(documents.RevisionedDocument):
+    class Meta(object):
+        required_fields = []
+        indexes = {'username':
+                            {
+                                'name':'_username_idx_',
+                                'unique':False,
+                                'dropDups':False,
+                            },
+                    'item': {
+                                'name':'_item_idx_',
+                                'unique':False,
+                                'dropDups':False
+                            },
+                    'is_liked': {
+                                'name':'_isliked_idx_',
+                                'unique':False,
+                                'dropDups':False
+                            },
+                  }
+'''
+
+- Composite Indexes are not supported yet.
+
+
+
+Creating a new Application
+--------------------------
+ 
+'''BASH
+mkdir appname
+cd appname
+touch controllers.py
+touch documents.py
+touch start.py
+'''
 
