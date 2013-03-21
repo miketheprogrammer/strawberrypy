@@ -340,3 +340,36 @@ _revision._schema = instance.schema.get_comparable()
 _revision.save()
 print 'New Revision for: %s \n\n' % str(instance.__class__)
 ```
+- UNDERSTANDING serializers.serialize_list
+
+```PYTHON
+Function Incomplete as of writing this.
+Only works 2 levels deep, doesnt recurse the whole object hierarchy
+Also terminology is off.
+
+def serialize_list(lst):
+    field_list = []
+    for model in lst:
+        if hasattr(model.Meta, 'related_to'):
+            for k, v in model.Meta.related_to.items():
+                attr = getattr(model, k)
+                if isinstance(attr, list):
+                    new_list = []
+                    for like in attr:
+                        new_list.append(like.fields)
+                    setattr(model, k, new_list)
+        field_list.append(model.fields)
+    return encoders.MongoEncoder().encode(field_list)
+```
+The function simply recurses over the object getting attributes and appending to list. Then passes it to encoders.MongoEncoder().encode()
+
+```PYTHON
+from json import JSONEncoder
+from bson import ObjectId
+class MongoEncoder(JSONEncoder):
+    def default(self, obj, **kwargs):
+        if isinstance(obj, ObjectId):
+            return str(obj)
+        else:
+            return JSONEncoder.default(obj, **kwargs)
+```
