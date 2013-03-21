@@ -30,6 +30,6 @@ setup(
     license='MIT',
     packages=find_packages(exclude=['examples', 'lib']),
     include_package_data=True,
-    install_requires=['cherrypy', 'pymongo', 'bson'],
+    install_requires=['cherrypy', 'pymongo'],
     zip_safe=False,
 )

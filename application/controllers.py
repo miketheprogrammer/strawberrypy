@@ -25,10 +25,18 @@ class UserController(BaseController):
 
 
     def get(self):
+        if 'content-type' in self.params:
+            content_type = 'text/'+self.params['content-type']
+            del self.params['content-type']
+        else:
+            content_type = 'text/plain'
         self.query = self.params
+        
         results = self.collection.find(self.query)
         json_response = strawberry.core.serializers.serialize_list(results)
-        self.response_headers = [('Content-type', 'text/plain'), ('Cache-Control',('max-age=100'))]
+
+
+        self.response_headers = [('Content-type', content_type), ('Cache-Control',('max-age=100'))]
         super(UserController, self).get()
 
         return self.get_debug() + json_response
