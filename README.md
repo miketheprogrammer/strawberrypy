@@ -177,32 +177,32 @@ class UserController(BaseController):
 
 UNDERSTANDING a controller
 --------------------------
-'''PYTHON
+```PYTHON
 class UserController(BaseController):
     default_message = 'no users'
     collection = documents.UserDocument
-'''
+```
 	- default_message: What message to display if there are no records found.
 	- collection : the model to use
 
-'''PYTHON
+```PYTHON
     def get(self):
         self.query = self.params
         results = self.collection.find(self.query)
         json_response = strawberry.core.serializers.serialize_list(results)
         self.response_headers = [('Content-type', 'text/plain'), ('Cache-Control',('max-age=100'))]
         super(UserController, self).get()
-'''
+```
 	- Refer to 
 		```PYTHON
 		results = self.collection.find(self.query)
 		```
 		- This call returns a collection of documents as objects, not as json
-		
+
 	- Refer to the line
-		'''PYTHON
+		```PYTHON
 		json_response = strawberry.core.serializers.serialize_list(results)
-		'''
+		```
 		- Included in strawberry is a special serializer for converting between objects and mongodb.
 
 
