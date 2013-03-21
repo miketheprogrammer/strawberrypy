@@ -34,7 +34,7 @@ Tightening the search
 -----------
 Example GET Request
 
-- `http://localhost:8007/users/username/user0` GETS all users
+- `http://localhost:8007/users/username/user0` 
 	- `Returns a subset of the users where username = user0`
 
 Following the object hierarchy
