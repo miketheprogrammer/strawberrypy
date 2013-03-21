@@ -66,3 +66,52 @@ What if we want to find all items that the user has liked
 	- ```
 	[{"username": "user0", "item": "item0", "is_liked": 1, "_id": "5100489386a95530739473bd", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item4", "is_liked": 1, "_id": "5100489386a95530739473c1", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item6", "is_liked": 1, "_id": "5100489386a95530739473c3", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item7", "is_liked": 1, "_id": "5100489386a95530739473c4", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item8", "is_liked": 1, "_id": "5100489386a95530739473c5", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item9", "is_liked": 1, "_id": "5100489386a95530739473c6", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item11", "is_liked": 1, "_id": "5100489386a95530739473c8", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item15", "is_liked": 1, "_id": "5100489386a95530739473cc", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item17", "is_liked": 1, "_id": "5100489386a95530739473ce", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item18", "is_liked": 1, "_id": "5100489386a95530739473cf", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item19", "is_liked": 1, "_id": "5100489386a95530739473d0", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item20", "is_liked": 1, "_id": "5100489386a95530739473d1", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item24", "is_liked": 1, "_id": "5100489386a95530739473d5", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item26", "is_liked": 1, "_id": "5100489386a95530739473d7", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item27", "is_liked": 1, "_id": "5100489386a95530739473d8", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item32", "is_liked": 1, "_id": "5100489386a95530739473dd", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item37", "is_liked": 1, "_id": "5100489386a95530739473e2", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item40", "is_liked": 1, "_id": "5100489386a95530739473e5", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item42", "is_liked": 1, "_id": "5100489386a95530739473e7", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item43", "is_liked": 1, "_id": "5100489386a95530739473e8", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item46", "is_liked": 1, "_id": "5100489386a95530739473eb", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item48", "is_liked": 1, "_id": "5100489386a95530739473ed", "_revision_id": "5100489086a955305e447048"}]
 	```
+
+Creating a new Model or known in Stawberry as a Document.
+---------------------------------------------------------
+
+- Necessary Imports
+	- `from strawberry.core.database.mongitude.base import connection, documents, schema, encoders`
+	- `from bson import ObjectId`
+
+- Creating the User Document
+
+```PYTHON
+class UserDocument(documents.RevisionedDocument):
+    class Meta(object):
+        required_fields = ['username']
+        related_to = {'likes': (LikesDocument, 'username')}
+        indexes = {'username':
+                            {
+                                'name':'_username_idx_',
+                                'unique':True,
+                                'dropDups':True,
+                            },
+                  }
+
+    def __init__(self, *args, **kwargs):
+        self._id = ObjectId
+        self.username = str
+        self.name = str
+        self.age = int
+        self.likes = list
+        super(self.__class__, self).__init__(collection_name='users', **kwargs)
+
+```
+
+Understanding the Document
+--------------------------
+All documents have a `class Meta(object)` which describes important information
+including relational structure
+- Understanding Meta
+	- related_to : `related_to = {'likes': (LikesDocument, 'username')}`
+		- In this case it indicates this class has a child likes composed of a document LikesDocument, related on field `username`
+	- indexes : `Creates indexes on the keys listed, all parameters are natural pymongo and in turn mongo db parameters`
+
+
+- Understanding __init__
+	- Each field declared here is a description of schema, in order for naive-validation to work, the field must be equal to its type
+
+	- super...blah...collection_name='users'
+		- Says to use db.users as the collection. i.e. `main.users`
+
