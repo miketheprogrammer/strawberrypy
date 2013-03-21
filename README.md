@@ -37,13 +37,14 @@ Example GET Request
 
 	The Response ( this reponse is truncated because it was way too long. Also it has debug enabled so it prints the query data)
 	------------
-	- `
-QUERY :{"_revision_id": "5100489086a955305e447047"}
-Params :{"_revision_id": "5100489086a955305e447047"}
- PATH :"/users"
+
 
 `EXAMPLE ONLY Displays user0`
 ```PYTHON
+QUERY :{"_revision_id": "5100489086a955305e447047"}
+Params :{"_revision_id": "5100489086a955305e447047"}
+PATH :"/users"
+
 [
 	{
 		"username": "user0", 
