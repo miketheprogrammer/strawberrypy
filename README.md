@@ -114,12 +114,12 @@ Creating a new Model or known in Strawberry as a Document.
 ---------------------------------------------------------
 
 - Necessary Imports
+
 ```PYTHON
 from strawberry.core.database.mongitude.base import connection, documents, schema, encoders
 from bson import ObjectId
-
-- Creating the User Document
 ```
+- Creating the User Document
 ```PYTHON
 class UserDocument(documents.RevisionedDocument):
     class Meta(object):
