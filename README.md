@@ -145,6 +145,7 @@ class UserDocument(documents.RevisionedDocument):
 
 Understanding the Document
 --------------------------
+
 All documents have a `class Meta(object)` which describes important information
 including relational structure
 - Understanding Meta
