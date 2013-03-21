@@ -9,8 +9,11 @@ While both StrawberryPy and Mongitude are far from finished they sport some inte
 
 Installing
 ----------
-clone the repo
+- MUST HAVE MONGO DB INSTALLED
+- clone the repo
 - run `sudo python setup.py install`
+	- This will install dependencies [CherryPy, PyMongo]
+
 
 Starting the Server
 -------------------
