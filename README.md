@@ -7,10 +7,22 @@ This version of Strawberry Py also includes my MongoDB Relational Mapper and sch
 
 While both StrawberryPy and Mongitude are far from finished they sport some interesting functionality.
 
+Installing
+----------
+clone the repo
+- run `sudo python setup.py install`
 
-- Note if you want to generate any of this initial data run the script 
-	python application/initial_data.py
-	- Must have MongoDB installed
+Starting the Server
+-------------------
+There is a demo application in the application folder
+- run `python application/start.py`
+- wait for it to start then exit out of it, softly with cntr + c
+- run `python application/initial_data.py`
+- run `python application/start.py`
+
+Reason for this is we need to do an initial schema migration.
+After which we can load data.
+
 
 The Request
 -----------
