@@ -341,7 +341,7 @@ _revision.save()
 print 'New Revision for: %s \n\n' % str(instance.__class__)
 ```
 - UNDERSTANDING serializers.serialize_list
-
+------------------------------------------
 ```PYTHON
 Function Incomplete as of writing this.
 Only works 2 levels deep, doesnt recurse the whole object hierarchy
