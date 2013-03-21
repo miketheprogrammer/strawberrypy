@@ -296,5 +296,24 @@ UNDERSTANDING start.py
 ``
 
 
+DIGGIN DEEPER
+-------------
+- Understanding how migrations work.
 
+Firstly, all documents that want to be revisioned must inherit from
+RevisionedDocument. This creates a field called _revision_id
 
+When the server starts it compares all registered documents schemas
+with the schema stored in the revisions collection.
+
+The Following code is how its done. It's simple but efficient
+```PYTHON
+<<Code Segment>>
+set_a = set(revision['_schema'].items())
+set_b = set(instance.schema.get_comparable().items())
+diff =  set_a - set_b
+diff2 = set_b - set_a 
+if len(diff) == 0 and len(diff2) == 0:
+	print 'Found Revision: %s \n\n' % str(revision['_id'])
+	return True
+```
