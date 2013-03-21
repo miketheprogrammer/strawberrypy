@@ -7,7 +7,7 @@ class Base(object):
         print self.__class__
 
 
-class BaseController(object):
+class BaseController(Base):
     default_message = '<<BaseController>>'
     response_headers = [('Content-type', 'text/plain')]
 
@@ -32,12 +32,14 @@ class BaseController(object):
         for k, v in self.query.items():
             if isinstance(v, ObjectId):
                 self.query[k] = str(v)
+
     def get_debug(self):
         self.prepare_debug()
         return ("\nQUERY :" + simplejson.dumps(self.query)
-               + "\nParams :" + simplejson.dumps(self.params)
-               + "\n PATH :" + simplejson.dumps(self.path)
-               + "\n\n\n\n")
+                            + "\nParams :" + simplejson.dumps(self.params)
+                            + "\n PATH :" + simplejson.dumps(self.path)
+                            + "\n\n\n\n")
+
     def _process_parameters(self):
         params = self.path.split(self.route)[1]
         params = self.path.split('/')
