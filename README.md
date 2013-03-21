@@ -298,6 +298,7 @@ UNDERSTANDING start.py
 
 DIGGIN DEEPER
 -------------
+
 	- Understanding how migrations work.
 	------------------------------------
 
