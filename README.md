@@ -63,8 +63,20 @@ What if we want to find all items that the user has liked
 
 	The Response ()
 	------------
-	- ```PYTHON
-	[{"username": "user0", "item": "item0", "is_liked": 1, "_id": "5100489386a95530739473bd", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item4", "is_liked": 1, "_id": "5100489386a95530739473c1", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item6", "is_liked": 1, "_id": "5100489386a95530739473c3", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item7", "is_liked": 1, "_id": "5100489386a95530739473c4", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item8", "is_liked": 1, "_id": "5100489386a95530739473c5", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item9", "is_liked": 1, "_id": "5100489386a95530739473c6", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item11", "is_liked": 1, "_id": "5100489386a95530739473c8", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item15", "is_liked": 1, "_id": "5100489386a95530739473cc", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item17", "is_liked": 1, "_id": "5100489386a95530739473ce", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item18", "is_liked": 1, "_id": "5100489386a95530739473cf", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item19", "is_liked": 1, "_id": "5100489386a95530739473d0", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item20", "is_liked": 1, "_id": "5100489386a95530739473d1", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item24", "is_liked": 1, "_id": "5100489386a95530739473d5", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item26", "is_liked": 1, "_id": "5100489386a95530739473d7", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item27", "is_liked": 1, "_id": "5100489386a95530739473d8", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item32", "is_liked": 1, "_id": "5100489386a95530739473dd", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item37", "is_liked": 1, "_id": "5100489386a95530739473e2", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item40", "is_liked": 1, "_id": "5100489386a95530739473e5", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item42", "is_liked": 1, "_id": "5100489386a95530739473e7", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item43", "is_liked": 1, "_id": "5100489386a95530739473e8", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item46", "is_liked": 1, "_id": "5100489386a95530739473eb", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item48", "is_liked": 1, "_id": "5100489386a95530739473ed", "_revision_id": "5100489086a955305e447048"}]
+	```PYTHON
+	[
+		{
+			"username": "user0", 
+			"item": "item0", 
+			"is_liked": 1, 
+			"_id": "5100489386a95530739473bd", 
+			"_revision_id": "5100489086a955305e447048"}, 
+		{
+			"username": "user0", 
+			"item": "item4", 
+			"is_liked": 1, 
+			"_id": "5100489386a95530739473c1", 
+			"_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item6", "is_liked": 1, "_id": "5100489386a95530739473c3", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item7", "is_liked": 1, "_id": "5100489386a95530739473c4", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item8", "is_liked": 1, "_id": "5100489386a95530739473c5", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item9", "is_liked": 1, "_id": "5100489386a95530739473c6", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item11", "is_liked": 1, "_id": "5100489386a95530739473c8", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item15", "is_liked": 1, "_id": "5100489386a95530739473cc", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item17", "is_liked": 1, "_id": "5100489386a95530739473ce", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item18", "is_liked": 1, "_id": "5100489386a95530739473cf", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item19", "is_liked": 1, "_id": "5100489386a95530739473d0", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item20", "is_liked": 1, "_id": "5100489386a95530739473d1", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item24", "is_liked": 1, "_id": "5100489386a95530739473d5", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item26", "is_liked": 1, "_id": "5100489386a95530739473d7", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item27", "is_liked": 1, "_id": "5100489386a95530739473d8", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item32", "is_liked": 1, "_id": "5100489386a95530739473dd", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item37", "is_liked": 1, "_id": "5100489386a95530739473e2", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item40", "is_liked": 1, "_id": "5100489386a95530739473e5", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item42", "is_liked": 1, "_id": "5100489386a95530739473e7", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item43", "is_liked": 1, "_id": "5100489386a95530739473e8", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item46", "is_liked": 1, "_id": "5100489386a95530739473eb", "_revision_id": "5100489086a955305e447048"}, {"username": "user0", "item": "item48", "is_liked": 1, "_id": "5100489386a95530739473ed", "_revision_id": "5100489086a955305e447048"}]
 	```
 
 Creating a new Model or known in Strawberry as a Document.
@@ -119,7 +131,7 @@ including relational structure
 
 Example of Multiple indexes
 ---------------------------
-'''PYTHON
+```PYTHON
 class LikesDocument(documents.RevisionedDocument):
     class Meta(object):
         required_fields = []
@@ -140,7 +152,7 @@ class LikesDocument(documents.RevisionedDocument):
                                 'dropDups':False
                             },
                   }
-'''
+```
 
 - Composite Indexes are not supported yet.
 
@@ -148,14 +160,14 @@ class LikesDocument(documents.RevisionedDocument):
 CREATING a controller
 ---------------------
 
-'''PYTHON
+```PYTHON
 from strawberry.core.base import BaseController
 from strawberry.core.database.mongitude.base import encoders
 import strawberry.core.serializers
 import documents
-'''
+```
 
-'''PYTHON
+```PYTHON
 class UserController(BaseController):
     default_message = 'no users'
     collection = documents.UserDocument
@@ -173,7 +185,7 @@ class UserController(BaseController):
     def post(self):
         return self.get()
         return 'GET ' + json_response
-'''
+```
 
 UNDERSTANDING a controller
 --------------------------
