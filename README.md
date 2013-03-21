@@ -141,7 +141,7 @@ class UserDocument(documents.RevisionedDocument):
         self.likes = list
         super(self.__class__, self).__init__(collection_name='users', **kwargs)
 
-```
+
 
 Understanding the Document
 --------------------------
