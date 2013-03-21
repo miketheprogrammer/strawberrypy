@@ -145,15 +145,111 @@ class LikesDocument(documents.RevisionedDocument):
 - Composite Indexes are not supported yet.
 
 
+CREATING a controller
+---------------------
+
+'''PYTHON
+from strawberry.core.base import BaseController
+from strawberry.core.database.mongitude.base import encoders
+import strawberry.core.serializers
+import documents
+'''
+
+'''PYTHON
+class UserController(BaseController):
+    default_message = 'no users'
+    collection = documents.UserDocument
+
+
+    def get(self):
+        self.query = self.params
+        results = self.collection.find(self.query)
+        json_response = strawberry.core.serializers.serialize_list(results)
+        self.response_headers = [('Content-type', 'text/plain'), ('Cache-Control',('max-age=100'))]
+        super(UserController, self).get()
+
+        return self.get_debug() + json_response
+
+    def post(self):
+        return self.get()
+        return 'GET ' + json_response
+'''
+
+UNDERSTANDING a controller
+--------------------------
+'''PYTHON
+class UserController(BaseController):
+    default_message = 'no users'
+    collection = documents.UserDocument
+'''
+	- default_message: What message to display if there are no records found.
+	- collection : the model to use
+
+'''PYTHON
+    def get(self):
+        self.query = self.params
+        results = self.collection.find(self.query)
+        json_response = strawberry.core.serializers.serialize_list(results)
+        self.response_headers = [('Content-type', 'text/plain'), ('Cache-Control',('max-age=100'))]
+        super(UserController, self).get()
+'''
+	- Refer to 
+		```PYTHON
+		results = self.collection.find(self.query)
+		```
+		- This call returns a collection of documents as objects, not as json
+		
+	- Refer to the line
+		'''PYTHON
+		json_response = strawberry.core.serializers.serialize_list(results)
+		'''
+		- Included in strawberry is a special serializer for converting between objects and mongodb.
+
 
 Creating a new Application
 --------------------------
  
-'''BASH
+'''PERL
 mkdir appname
 cd appname
 touch controllers.py
 touch documents.py
 touch start.py
 '''
+
+CREATING start.py
+-----------------
+Assumes you have controllers and documents
+
+'''PYTHON
+import strawberry
+import controllers
+import documents
+
+strawberry.core.server.load_route(r'',controllers.IndexController)
+strawberry.core.server.load_route(r'^/users', controllers.UserController)
+strawberry.core.server.load_route(r'^/likes', controllers.LikesController)
+strawberry.core.server.load_route(r'^/realusers', controllers.RealUserController)
+
+strawberry.core.server.register_model(documents.UserDocument)
+strawberry.core.server.register_model(documents.LikesDocument)
+strawberry.core.server.register_model(documents.RealUserDocument)
+
+strawberry.core.server.server(host='0.0.0.0', port=80).start()
+'''
+
+UNDERSTANDING start.py
+----------------------
+
+`load_route` takes a regexp route, and a controller to use
+
+`register_model` simply registers the model for use, and will automatically migrate all registered models.
+
+`server().start()`
+	- default host is `0.0.0.0`
+	- default port is `8007`
+``
+
+
+
 
