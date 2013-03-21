@@ -40,6 +40,8 @@ def route(environ, start_response):
 class server(object):
     def __init__(self, host='0.0.0.0', port=8007):
         d = wsgiserver.WSGIPathInfoDispatcher({'/': route})
+        self.host = host
+        self.port = port
         self.server = wsgiserver.CherryPyWSGIServer((host, port), d, server_name="www.m.x")
 
     def _prepare_system(self):
@@ -54,7 +56,7 @@ class server(object):
         try:
             print 'Preparing Database \n'
             self._prepare_system()
-            print 'Starting Server \n'
+            print 'Starting Server on port %(port)s @ %(host)s \n' % {'port': self.port, 'host': self.host}
             self.server.start()
         except KeyboardInterrupt:
             self.server.stop()
