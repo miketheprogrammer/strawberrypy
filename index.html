@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Strawberrypy : StrawberryPy" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Strawberrypy</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/miketheprogrammer/strawberrypy">View on GitHub</a>
+
+          <h1 id="project_title">Strawberrypy</h1>
+          <h2 id="project_tagline">StrawberryPy</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/miketheprogrammer/strawberrypy/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/miketheprogrammer/strawberrypy/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h2>
+<a name="strawberry-py" class="anchor" href="#strawberry-py"><span class="octicon octicon-link"></span></a>Strawberry Py</h2>
+
+<p>Strawberry Py is a lightweight RESTFull (No Auth Yet) API Server. It is fast, efficient, and simple. Thats all.</p>
+
+<p>This version of Strawberry Py also includes my MongoDB Relational Mapper and schema versioner called Mongitude</p>
+
+<p>While both StrawberryPy and Mongitude are far from finished they sport some interesting functionality.</p>
+
+<h2>
+<a name="installing" class="anchor" href="#installing"><span class="octicon octicon-link"></span></a>Installing</h2>
+
+<ul>
+<li>MUST HAVE MONGO DB INSTALLED</li>
+<li>clone the repo</li>
+<li>
+<code>git clone git@github.com:miketheprogrammer/strawberrypy.git</code>
+
+<ul>
+<li><code>cd strawberrypy</code></li>
+</ul>
+</li>
+<li>run <code>sudo python setup.py install</code>
+
+<ul>
+<li>This will install dependencies [CherryPy, PyMongo]</li>
+</ul>
+</li>
+</ul><h2>
+<a name="starting-the-server" class="anchor" href="#starting-the-server"><span class="octicon octicon-link"></span></a>Starting the Server</h2>
+
+<p>There is a demo application in the application folder</p>
+
+<ul>
+<li>run <code>python application/start.py</code>
+</li>
+<li>wait for it to start then exit out of it, softly with cntr + c</li>
+<li>run <code>python application/initial_data.py</code>
+</li>
+<li>run <code>python application/start.py</code>
+</li>
+</ul><p>Reason for this is we need to do an initial schema migration.
+After which we can load data.</p>
+
+<h2>
+<a name="the-request" class="anchor" href="#the-request"><span class="octicon octicon-link"></span></a>The Request</h2>
+
+<p>Example GET Request</p>
+
+<ul>
+<li>
+<p><code>http://localhost:8007/users/</code> GETS all users</p>
+
+<h2>
+<a name="the-response--this-reponse-is-truncated-because-it-was-way-too-long-also-it-has-debug-enabled-so-it-prints-the-query-data" class="anchor" href="#the-response--this-reponse-is-truncated-because-it-was-way-too-long-also-it-has-debug-enabled-so-it-prints-the-query-data"><span class="octicon octicon-link"></span></a>The Response ( this reponse is truncated because it was way too long. Also it has debug enabled so it prints the query data)</h2>
+</li>
+</ul><p><code>EXAMPLE ONLY Displays user0</code></p>
+
+<div class="highlight"><pre><span class="n">QUERY</span> <span class="p">:{</span><span class="s">"_revision_id"</span><span class="p">:</span> <span class="s">"5100489086a955305e447047"</span><span class="p">}</span>
+<span class="n">Params</span> <span class="p">:{</span><span class="s">"_revision_id"</span><span class="p">:</span> <span class="s">"5100489086a955305e447047"</span><span class="p">}</span>
+<span class="n">PATH</span> <span class="p">:</span><span class="s">"/users"</span>
+
+<span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s">"username"</span><span class="p">:</span> <span class="s">"user0"</span><span class="p">,</span> 
+        <span class="s">"_revision_id"</span><span class="p">:</span> <span class="s">"5100489086a955305e447047"</span><span class="p">,</span> 
+        <span class="s">"name"</span><span class="p">:</span> <span class="s">"surname0, first0"</span><span class="p">,</span> 
+        <span class="s">"age"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> 
+        <span class="s">"_id"</span><span class="p">:</span> <span class="s">"5100489386a95530739473bc"</span><span class="p">,</span> 
+        <span class="s">"likes"</span><span class="p">:</span> 
+            <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s">"username"</span><span class="p">:</span> <span class="s">"user0"</span><span class="p">,</span> 
+                    <span class="s">"item"</span><span class="p">:</span> <span class="s">"item0"</span><span class="p">,</span> 
+                    <span class="s">"is_liked"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> 
+                    <span class="s">"_id"</span><span class="p">:</span> <span class="s">"5100489386a95530739473bd"</span><span class="p">,</span> 
+                    <span class="s">"_revision_id"</span><span class="p">:</span> <span class="s">"5100489086a955305e447048"</span>
+                <span class="p">},</span> 
+                <span class="p">{</span>
+                    <span class="s">"username"</span><span class="p">:</span> <span class="s">"user0"</span><span class="p">,</span> 
+                    <span class="s">"item"</span><span class="p">:</span> <span class="s">"item1"</span><span class="p">,</span> <span class="s">"is_liked"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> 
+
+                    <span class="o">.......</span><span class="n">etcetera</span>
+</pre></div>
+
+<h2>
+<a name="tightening-the-search" class="anchor" href="#tightening-the-search"><span class="octicon octicon-link"></span></a>Tightening the search</h2>
+
+<p>Example GET Request</p>
+
+<ul>
+<li>
+<code>http://localhost:8007/users/username/user0</code> 
+
+<ul>
+<li><code>Returns a subset of the users where username = user0</code></li>
+</ul>
+</li>
+</ul><h2>
+<a name="following-the-object-hierarchy" class="anchor" href="#following-the-object-hierarchy"><span class="octicon octicon-link"></span></a>Following the object hierarchy</h2>
+
+<p>We see that users have likes attributed between them and an item, thats interesting
+What if we want to find all items that the user has liked</p>
+
+<ul>
+<li>
+<p><code>http://localhost:8007/likes/username/user0/is_liked/1</code></p>
+
+<h2>
+<a name="the-response-" class="anchor" href="#the-response-"><span class="octicon octicon-link"></span></a>The Response ()</h2>
+
+<div class="highlight"><pre><span class="n">QUERY</span> <span class="p">:{</span><span class="s">"username"</span><span class="p">:</span> <span class="s">"user0"</span><span class="p">,</span> <span class="s">"is_liked"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"_revision_id"</span><span class="p">:</span> <span class="s">"514b33f286a955572d88c4d7"</span><span class="p">}</span>
+<span class="n">Params</span> <span class="p">:{</span><span class="s">"username"</span><span class="p">:</span> <span class="s">"user0"</span><span class="p">,</span> <span class="s">"is_liked"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"_revision_id"</span><span class="p">:</span> <span class="s">"514b33f286a955572d88c4d7"</span><span class="p">}</span>
+<span class="n">PATH</span> <span class="p">:</span><span class="s">"/likes/username/user0/is_liked/1"</span>
+<span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s">"username"</span><span class="p">:</span> <span class="s">"user0"</span><span class="p">,</span> 
+        <span class="s">"item"</span><span class="p">:</span> <span class="s">"item0"</span><span class="p">,</span> 
+        <span class="s">"is_liked"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> 
+        <span class="s">"_id"</span><span class="p">:</span> <span class="s">"5100489386a95530739473bd"</span><span class="p">,</span> 
+        <span class="s">"_revision_id"</span><span class="p">:</span> <span class="s">"5100489086a955305e447048"</span><span class="p">},</span> 
+    <span class="p">{</span>
+        <span class="s">"username"</span><span class="p">:</span> <span class="s">"user0"</span><span class="p">,</span> 
+        <span class="s">"item"</span><span class="p">:</span> <span class="s">"item4"</span><span class="p">,</span> 
+        <span class="s">"is_liked"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> 
+        <span class="s">"_id"</span><span class="p">:</span> <span class="s">"5100489386a95530739473c1"</span><span class="p">,</span> 
+        <span class="s">"_revision_id"</span><span class="p">:</span> <span class="s">"5100489086a955305e447048"</span><span class="p">},</span> 
+    <span class="p">{</span>
+        <span class="s">"username"</span><span class="p">:</span> <span class="s">"user0"</span><span class="p">,</span> 
+        <span class="s">"item"</span><span class="p">:</span> <span class="s">"item6"</span><span class="p">,</span> 
+        <span class="s">"is_liked"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> 
+        <span class="s">"_id"</span><span class="p">:</span> <span class="s">"5100489386a95530739473c3"</span><span class="p">,</span> 
+        <span class="s">"_revision_id"</span><span class="p">:</span> <span class="s">"5100489086a955305e447048"</span><span class="p">},</span> 
+<span class="p">]</span>
+</pre></div>
+</li>
+</ul><h2>
+<a name="creating-a-new-model-or-known-in-strawberry-as-a-document" class="anchor" href="#creating-a-new-model-or-known-in-strawberry-as-a-document"><span class="octicon octicon-link"></span></a>Creating a new Model or known in Strawberry as a Document.</h2>
+
+<ul>
+<li>Necessary Imports</li>
+</ul><div class="highlight"><pre><span class="kn">from</span> <span class="nn">strawberry.core.database.mongitude.base</span> <span class="kn">import</span> <span class="n">connection</span><span class="p">,</span> <span class="n">documents</span><span class="p">,</span> <span class="n">schema</span><span class="p">,</span> <span class="n">encoders</span>
+<span class="kn">from</span> <span class="nn">bson</span> <span class="kn">import</span> <span class="n">ObjectId</span>
+</pre></div>
+
+<ul>
+<li>
+<p>Creating the User Document</p>
+
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">UserDocument</span><span class="p">(</span><span class="n">documents</span><span class="o">.</span><span class="n">RevisionedDocument</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Meta</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">required_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s">'username'</span><span class="p">]</span>
+    <span class="n">related_to</span> <span class="o">=</span> <span class="p">{</span><span class="s">'likes'</span><span class="p">:</span> <span class="p">(</span><span class="n">LikesDocument</span><span class="p">,</span> <span class="s">'username'</span><span class="p">)}</span>
+    <span class="n">indexes</span> <span class="o">=</span> <span class="p">{</span><span class="s">'username'</span><span class="p">:</span>
+                        <span class="p">{</span>
+                            <span class="s">'name'</span><span class="p">:</span><span class="s">'_username_idx_'</span><span class="p">,</span>
+                            <span class="s">'unique'</span><span class="p">:</span><span class="bp">True</span><span class="p">,</span>
+                            <span class="s">'dropDups'</span><span class="p">:</span><span class="bp">True</span><span class="p">,</span>
+                        <span class="p">},</span>
+              <span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">=</span> <span class="n">ObjectId</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="nb">str</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="nb">str</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="nb">int</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">likes</span> <span class="o">=</span> <span class="nb">list</span>
+    <span class="nb">super</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">collection_name</span><span class="o">=</span><span class="s">'users'</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</li>
+</ul><h2>
+<a name="understanding-the-document" class="anchor" href="#understanding-the-document"><span class="octicon octicon-link"></span></a>Understanding the Document</h2>
+
+<p>All documents have a <code>class Meta(object)</code> which describes important information
+including relational structure</p>
+
+<ul>
+<li>
+<p>Understanding Meta</p>
+
+<ul>
+<li>related_to : <code>related_to = {'likes': (LikesDocument, 'username')}</code>
+
+<ul>
+<li>In this case it indicates this class has a child likes composed of a document LikesDocument, related on field <code>username</code>
+</li>
+</ul>
+</li>
+<li>indexes : <code>Creates indexes on the keys listed, all parameters are natural pymongo and in turn mongo db parameters</code>
+</li>
+</ul>
+</li>
+<li>
+<p>Understanding <strong>init</strong></p>
+
+<ul>
+<li>Each field declared here is a description of schema, in order for naive-validation to work, the field must be equal to its type</li>
+<li>super...blah...collection_name='users'
+
+<ul>
+<li>Says to use db.users as the collection. i.e. <code>main.users</code>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul><h2>
+<a name="example-of-multiple-indexes" class="anchor" href="#example-of-multiple-indexes"><span class="octicon octicon-link"></span></a>Example of Multiple indexes</h2>
+
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">LikesDocument</span><span class="p">(</span><span class="n">documents</span><span class="o">.</span><span class="n">RevisionedDocument</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+        <span class="n">required_fields</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">indexes</span> <span class="o">=</span> <span class="p">{</span><span class="s">'username'</span><span class="p">:</span>
+                            <span class="p">{</span>
+                                <span class="s">'name'</span><span class="p">:</span><span class="s">'_username_idx_'</span><span class="p">,</span>
+                                <span class="s">'unique'</span><span class="p">:</span><span class="bp">False</span><span class="p">,</span>
+                                <span class="s">'dropDups'</span><span class="p">:</span><span class="bp">False</span><span class="p">,</span>
+                            <span class="p">},</span>
+                    <span class="s">'item'</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="s">'name'</span><span class="p">:</span><span class="s">'_item_idx_'</span><span class="p">,</span>
+                                <span class="s">'unique'</span><span class="p">:</span><span class="bp">False</span><span class="p">,</span>
+                                <span class="s">'dropDups'</span><span class="p">:</span><span class="bp">False</span>
+                            <span class="p">},</span>
+                    <span class="s">'is_liked'</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="s">'name'</span><span class="p">:</span><span class="s">'_isliked_idx_'</span><span class="p">,</span>
+                                <span class="s">'unique'</span><span class="p">:</span><span class="bp">False</span><span class="p">,</span>
+                                <span class="s">'dropDups'</span><span class="p">:</span><span class="bp">False</span>
+                            <span class="p">},</span>
+                  <span class="p">}</span>
+</pre></div>
+
+<ul>
+<li>Composite Indexes are not supported yet.</li>
+</ul><h2>
+<a name="creating-a-controller" class="anchor" href="#creating-a-controller"><span class="octicon octicon-link"></span></a>CREATING a controller</h2>
+
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">strawberry.core.base</span> <span class="kn">import</span> <span class="n">BaseController</span>
+<span class="kn">from</span> <span class="nn">strawberry.core.database.mongitude.base</span> <span class="kn">import</span> <span class="n">encoders</span>
+<span class="kn">import</span> <span class="nn">strawberry.core.serializers</span>
+<span class="kn">import</span> <span class="nn">documents</span>
+</pre></div>
+
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">UserController</span><span class="p">(</span><span class="n">BaseController</span><span class="p">):</span>
+    <span class="n">default_message</span> <span class="o">=</span> <span class="s">'no users'</span>
+    <span class="n">collection</span> <span class="o">=</span> <span class="n">documents</span><span class="o">.</span><span class="n">UserDocument</span>
+
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">)</span>
+        <span class="n">json_response</span> <span class="o">=</span> <span class="n">strawberry</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">serializers</span><span class="o">.</span><span class="n">serialize_list</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">response_headers</span> <span class="o">=</span> <span class="p">[(</span><span class="s">'Content-type'</span><span class="p">,</span> <span class="s">'text/plain'</span><span class="p">),</span> <span class="p">(</span><span class="s">'Cache-Control'</span><span class="p">,(</span><span class="s">'max-age=100'</span><span class="p">))]</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">UserController</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_debug</span><span class="p">()</span> <span class="o">+</span> <span class="n">json_response</span>
+
+    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="k">return</span> <span class="s">'GET '</span> <span class="o">+</span> <span class="n">json_response</span>
+</pre></div>
+
+<h2>
+<a name="understanding-a-controller" class="anchor" href="#understanding-a-controller"><span class="octicon octicon-link"></span></a>UNDERSTANDING a controller</h2>
+
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">UserController</span><span class="p">(</span><span class="n">BaseController</span><span class="p">):</span>
+    <span class="n">default_message</span> <span class="o">=</span> <span class="s">'no users'</span>
+    <span class="n">collection</span> <span class="o">=</span> <span class="n">documents</span><span class="o">.</span><span class="n">UserDocument</span>
+</pre></div>
+
+<pre><code>- default_message: What message to display if there are no records found.
+- collection : the model to use
+</code></pre>
+
+<div class="highlight"><pre>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">)</span>
+        <span class="n">json_response</span> <span class="o">=</span> <span class="n">strawberry</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">serializers</span><span class="o">.</span><span class="n">serialize_list</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">response_headers</span> <span class="o">=</span> <span class="p">[(</span><span class="s">'Content-type'</span><span class="p">,</span> <span class="s">'text/plain'</span><span class="p">),</span> <span class="p">(</span><span class="s">'Cache-Control'</span><span class="p">,(</span><span class="s">'max-age=100'</span><span class="p">))]</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">UserController</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+</pre></div>
+
+<pre><code>- Refer to 
+    ```PYTHON
+    results = self.collection.find(self.query)
+    ```
+    - This call returns a collection of documents as objects, not as json
+
+- Refer to the line
+    ```PYTHON
+    json_response = strawberry.core.serializers.serialize_list(results)
+    ```
+    - Included in strawberry is a special serializer for converting between objects and mongodb.
+</code></pre>
+
+<h2>
+<a name="creating-a-new-application" class="anchor" href="#creating-a-new-application"><span class="octicon octicon-link"></span></a>Creating a new Application</h2>
+
+<div class="highlight"><pre>mkdir appname
+<span class="nb">cd </span>appname
+touch controllers.py
+touch documents.py
+touch start.py
+</pre></div>
+
+<h2>
+<a name="creating-startpy" class="anchor" href="#creating-startpy"><span class="octicon octicon-link"></span></a>CREATING start.py</h2>
+
+<p>Assumes you have controllers and documents</p>
+
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">strawberry</span>
+<span class="kn">import</span> <span class="nn">controllers</span>
+<span class="kn">import</span> <span class="nn">documents</span>
+
+<span class="n">strawberry</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">load_route</span><span class="p">(</span><span class="s">r''</span><span class="p">,</span><span class="n">controllers</span><span class="o">.</span><span class="n">IndexController</span><span class="p">)</span>
+<span class="n">strawberry</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">load_route</span><span class="p">(</span><span class="s">r'^/users'</span><span class="p">,</span> <span class="n">controllers</span><span class="o">.</span><span class="n">UserController</span><span class="p">)</span>
+<span class="n">strawberry</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">load_route</span><span class="p">(</span><span class="s">r'^/likes'</span><span class="p">,</span> <span class="n">controllers</span><span class="o">.</span><span class="n">LikesController</span><span class="p">)</span>
+<span class="n">strawberry</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">load_route</span><span class="p">(</span><span class="s">r'^/realusers'</span><span class="p">,</span> <span class="n">controllers</span><span class="o">.</span><span class="n">RealUserController</span><span class="p">)</span>
+
+<span class="n">strawberry</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">register_model</span><span class="p">(</span><span class="n">documents</span><span class="o">.</span><span class="n">UserDocument</span><span class="p">)</span>
+<span class="n">strawberry</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">register_model</span><span class="p">(</span><span class="n">documents</span><span class="o">.</span><span class="n">LikesDocument</span><span class="p">)</span>
+<span class="n">strawberry</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">register_model</span><span class="p">(</span><span class="n">documents</span><span class="o">.</span><span class="n">RealUserDocument</span><span class="p">)</span>
+
+<span class="n">strawberry</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">server</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s">'0.0.0.0'</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+
+<h2>
+<a name="understanding-startpy" class="anchor" href="#understanding-startpy"><span class="octicon octicon-link"></span></a>UNDERSTANDING start.py</h2>
+
+<p><code>load_route</code> takes a regexp route, and a controller to use</p>
+
+<p><code>register_model</code> simply registers the model for use, and will automatically migrate all registered models.</p>
+
+<p><code>server().start()</code>
+    - default host is <code>0.0.0.0</code>
+    - default port is <code>8007</code>
+``</p>
+
+<h2>
+<a name="diggin-deeper" class="anchor" href="#diggin-deeper"><span class="octicon octicon-link"></span></a>DIGGIN DEEPER</h2>
+
+<h2>
+<a name="--understanding-how-migrations-work" class="anchor" href="#--understanding-how-migrations-work"><span class="octicon octicon-link"></span></a>- Understanding how migrations work.</h2>
+
+<p>Firstly, all documents that want to be revisioned must inherit from
+RevisionedDocument. This creates a field called _revision_id</p>
+
+<p>When the server starts it compares all registered documents schemas
+with the schema stored in the revisions collection.</p>
+
+<p>The Following code is how its done. It's simple but efficient</p>
+
+<div class="highlight"><pre><span class="o">&lt;&lt;</span><span class="n">Start</span> <span class="n">Code</span> <span class="n">Segment</span><span class="o">&gt;&gt;</span>
+<span class="n">set_a</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">revision</span><span class="p">[</span><span class="s">'_schema'</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+<span class="n">set_b</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="n">schema</span><span class="o">.</span><span class="n">get_comparable</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+<span class="n">diff</span> <span class="o">=</span>  <span class="n">set_a</span> <span class="o">-</span> <span class="n">set_b</span>
+<span class="n">diff2</span> <span class="o">=</span> <span class="n">set_b</span> <span class="o">-</span> <span class="n">set_a</span> 
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">diff2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s">'Found Revision: </span><span class="si">%s</span><span class="s"> </span><span class="se">\n\n</span><span class="s">'</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">revision</span><span class="p">[</span><span class="s">'_id'</span><span class="p">])</span>
+    <span class="k">return</span> <span class="bp">True</span>
+<span class="o">&lt;&lt;</span><span class="n">End</span> <span class="n">Code</span> <span class="n">Segment</span><span class="o">&gt;&gt;</span>
+</pre></div>
+
+<ul>
+<li>We get two sets, which allow mathematical operations on them.
+Get the diffs, and compare.
+If either diff is != 0 in length we have an incomaptibility issue.</li>
+</ul><p>OTHERWISE WE:</p>
+
+<div class="highlight"><pre><span class="k">if</span> <span class="n">revision</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="n">version</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">revision</span><span class="p">[</span><span class="s">'_version'</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">version</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">print</span> <span class="s">'Current Version: </span><span class="si">%s</span><span class="s"> '</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">version</span><span class="p">)</span>
+<span class="n">_revision</span> <span class="o">=</span> <span class="n">RevisionHistoryDocument</span><span class="p">()</span>
+<span class="n">_revision</span><span class="o">.</span><span class="n">_version</span> <span class="o">=</span> <span class="n">version</span>
+<span class="n">_revision</span><span class="o">.</span><span class="n">_collection</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="n">collection_name</span>
+<span class="n">_revision</span><span class="o">.</span><span class="n">_schema</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="n">schema</span><span class="o">.</span><span class="n">get_comparable</span><span class="p">()</span>
+
+<span class="n">_revision</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+<span class="k">print</span> <span class="s">'New Revision for: </span><span class="si">%s</span><span class="s"> </span><span class="se">\n\n</span><span class="s">'</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="n">__class__</span><span class="p">)</span>
+</pre></div>
+
+<h2>
+<a name="--understanding-serializersserialize_list" class="anchor" href="#--understanding-serializersserialize_list"><span class="octicon octicon-link"></span></a>- UNDERSTANDING serializers.serialize_list</h2>
+
+<div class="highlight"><pre><span class="n">Function</span> <span class="n">Incomplete</span> <span class="k">as</span> <span class="n">of</span> <span class="n">writing</span> <span class="n">this</span><span class="o">.</span>
+<span class="n">Only</span> <span class="n">works</span> <span class="mi">2</span> <span class="n">levels</span> <span class="n">deep</span><span class="p">,</span> <span class="n">doesnt</span> <span class="n">recurse</span> <span class="n">the</span> <span class="n">whole</span> <span class="nb">object</span> <span class="n">hierarchy</span>
+<span class="n">Also</span> <span class="n">terminology</span> <span class="ow">is</span> <span class="n">off</span><span class="o">.</span>
+
+<span class="k">def</span> <span class="nf">serialize_list</span><span class="p">(</span><span class="n">lst</span><span class="p">):</span>
+    <span class="n">field_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Meta</span><span class="p">,</span> <span class="s">'related_to'</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">Meta</span><span class="o">.</span><span class="n">related_to</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">attr</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                    <span class="n">new_list</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="k">for</span> <span class="n">like</span> <span class="ow">in</span> <span class="n">attr</span><span class="p">:</span>
+                        <span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">like</span><span class="o">.</span><span class="n">fields</span><span class="p">)</span>
+                    <span class="nb">setattr</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">new_list</span><span class="p">)</span>
+        <span class="n">field_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">fields</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">encoders</span><span class="o">.</span><span class="n">MongoEncoder</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">field_list</span><span class="p">)</span>
+</pre></div>
+
+<p>The function simply recurses over the object getting attributes and appending to list. Then passes it to encoders.MongoEncoder().encode()</p>
+
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">json</span> <span class="kn">import</span> <span class="n">JSONEncoder</span>
+<span class="kn">from</span> <span class="nn">bson</span> <span class="kn">import</span> <span class="n">ObjectId</span>
+<span class="k">class</span> <span class="nc">MongoEncoder</span><span class="p">(</span><span class="n">JSONEncoder</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">ObjectId</span><span class="p">):</span>
+            <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">JSONEncoder</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Strawberrypy maintained by <a href="https://github.com/miketheprogrammer">miketheprogrammer</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
